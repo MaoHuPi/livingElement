@@ -32,19 +32,27 @@ String.prototype.sj = function(s, j){
 //         xmlhttp.send(value);
 //     }
 // }
+function $(e, f = document){return(f.querySelector(e));}
+function $$(e, f = document){return(f.querySelectorAll(e));}
 Object.prototype.LEInit = function(){};
-Object.prototype.LEUpdate = function(){};
+Object.prototype.LEUpdate = function(){
+    if(!('LEInited' in this && this.LEInited == true) && 'LEInit' in this){
+        this.LEInit();
+    }
+    this.remove();
+};
 function update(){
     $$('*').forEach(element => {
-        if(element.LEUpdate){
+        if('LEUpdate' in element){
             element.LEUpdate();
         }
     });
+    setTimeout(update, 30);
 }
 function main(){
     // if(location.href.indexOf('https://www.youtube.com/watch?v=') !== 0){
     //     return;
     // }
-    
+    // update();
 }
 main();
