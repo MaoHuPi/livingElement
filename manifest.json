@@ -1,0 +1,24 @@
+{
+    "name": "livingElement",
+    "description": "讓網頁中的每個元素皆「動起來」！",
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "icons": {
+        "128": "image/logo_128.png",
+        "48": "image/logo_48.png",
+        "16": "image/logo_16.png"
+    },
+    "content_scripts": [
+        {
+            "all_frames": false,
+            "js": [
+                "main.js"
+            ],
+            "matches": [
+                "http://*/*",
+                "https://*/*"
+            ],
+            "run_at": "document_end"
+        }
+    ]
+}
